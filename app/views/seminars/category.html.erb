@@ -1,0 +1,57 @@
+<div class="page-header-section"
+    style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80');">
+    <div class="page-header-overlay"></div>
+    <div class="container">
+        <h1 class="page-title-large"><%= @category.name %> 一覧</h1>
+        <p class="page-subtitle">
+            <% if @category.slug == 'care' %>
+                CARE SEMINAR
+            <% elsif @category.slug == 'it-dx' %>
+                IT & DX SEMINAR
+            <% elsif @category.slug == 'management' %>
+                MANAGEMENT SEMINAR
+            <% else %>
+                <%= @category.name.upcase %>
+            <% end %>
+        </p>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <% if @category.description.present? %>
+            <p class="seminars-intro fade-in" style="text-align: center; margin-bottom: 2rem;"><%= @category.description %></p>
+        <% end %>
+
+        <% if @seminars.any? %>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <% @seminars.each do |seminar| %>
+                    <div class="news-item fade-in" style="display: flex; align-items: center; gap: 1rem; padding: 1rem; border-bottom: 1px solid var(--color-gray-200);">
+                        <time class="news-date" datetime="<%= seminar.seminar_date %>" style="white-space: nowrap; color: var(--color-gray-500); font-size: 0.9rem; min-width: 90px;">
+                            <%= seminar.seminar_date&.strftime('%Y.%m.%d') %>
+                        </time>
+                        <div style="flex: 1;">
+                            <%= link_to seminar.title, seminar_path(slug: seminar.slug), class: "news-link", style: "color: var(--color-gray-800); font-weight: 500; text-decoration: none;" %>
+                            <% if seminar.location.present? %>
+                                <span style="display: block; font-size: 0.8rem; color: var(--color-gray-500); margin-top: 2px;">📍 <%= seminar.location %></span>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <div style="text-align: center; padding: 4rem 0;">
+                <p style="color: var(--color-gray-500); font-size: 1.1rem; margin-bottom: 1rem;">
+                    現在、このカテゴリのセミナーは予定されていません。
+                </p>
+                <p style="color: var(--color-gray-400); font-size: 0.9rem;">
+                    新しいセミナーが企画されましたら、こちらに掲載いたします。
+                </p>
+            </div>
+        <% end %>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <%= link_to "← セミナー一覧に戻る", seminars_path, class: "btn btn-secondary" %>
+        </div>
+    </div>
+</div>

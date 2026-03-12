@@ -1,0 +1,35 @@
+<div class="page-header-section"
+    style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80');">
+    <div class="page-header-overlay"></div>
+    <div class="container">
+        <h1 class="page-title-large">活動報告一覧</h1>
+        <p class="page-subtitle">ACTIVITY REPORTS</p>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <% if @reports.any? %>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <ul class="news-list">
+                    <% @reports.each do |report| %>
+                        <li class="news-item fade-in" style="display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; border-bottom: 1px solid var(--color-gray-200);">
+                            <time class="news-date" datetime="<%= report.published_at&.strftime('%Y-%m-%d') %>" style="white-space: nowrap; color: var(--color-gray-500); font-size: 0.95rem; min-width: 100px; padding-top: 4px;">
+                                <%= report.published_at&.strftime('%Y.%m.%d') %>
+                            </time>
+                            <div style="flex: 1;">
+                                <%= link_to report.title, activity_report_path(slug: report.slug), class: "news-link", style: "color: var(--color-gray-800); font-weight: 500; font-size: 1.1rem; text-decoration: none; display: block; margin-bottom: 0.5rem;" %>
+                            </div>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+        <% else %>
+            <div style="text-align: center; padding: 4rem 0;">
+                <p style="color: var(--color-gray-500); font-size: 1.1rem;">
+                    現在、活動報告はありません。
+                </p>
+            </div>
+        <% end %>
+    </div>
+</div>

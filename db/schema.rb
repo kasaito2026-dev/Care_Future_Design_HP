@@ -1,0 +1,55 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema[7.2].define(version: 2026_03_11_062600) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "activity_reports", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.text "content"
+    t.datetime "published_at"
+    t.boolean "is_published", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_activity_reports_on_slug", unique: true
+  end
+
+  create_table "seminar_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.text "description"
+    t.string "color", default: "#3B82F6"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_seminar_categories_on_slug", unique: true
+  end
+
+  create_table "seminars", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.text "description"
+    t.date "seminar_date"
+    t.string "location"
+    t.integer "capacity"
+    t.bigint "seminar_category_id"
+    t.boolean "is_published", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seminar_category_id"], name: "index_seminars_on_seminar_category_id"
+    t.index ["seminar_date"], name: "index_seminars_on_seminar_date"
+    t.index ["slug"], name: "index_seminars_on_slug", unique: true
+  end
+
+  add_foreign_key "seminars", "seminar_categories"
+end

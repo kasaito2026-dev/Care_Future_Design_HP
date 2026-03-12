@@ -1,0 +1,51 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Membership</span>
+        <h1 class="page-title">入会申込</h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <div class="contact-form-area fade-in" style="max-width: 700px; margin: 0 auto;">
+            <p style="margin-bottom: 2rem; color: var(--color-gray-600);">
+                入会をご希望の方は、以下のフォームに必要事項をご入力の上、送信してください。<br>
+                審査のうえ、結果をご連絡させていただきます。
+            </p>
+
+            <% if flash[:notice] %>
+                <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <%= flash[:notice] %>
+                </div>
+            <% end %>
+
+            <%= form_with url: join_path, method: :post, local: true, style: "display: flex; flex-direction: column; gap: 1.5rem;" do |f| %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">お名前 <span style="color: red;">*</span></label>
+                    <input type="text" name="join[name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">メールアドレス <span style="color: red;">*</span></label>
+                    <input type="email" name="join[email]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">電話番号 <span style="color: red;">*</span></label>
+                    <input type="tel" name="join[phone]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">ご所属(個人の方は"個人"と記載) <span style="color: red;">*</span></label>
+                    <input type="text" name="join[organization]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button type="submit" class="btn btn-accent btn-large">入会を申し込む</button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

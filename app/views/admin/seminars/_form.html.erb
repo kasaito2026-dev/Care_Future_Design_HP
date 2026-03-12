@@ -1,0 +1,86 @@
+<%= form_with(model: [:admin, @seminar], class: "space-y-6 bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6") do |f| %>
+  <% if @seminar.errors.any? %>
+    <div class="rounded-md bg-red-50 p-4 mb-6">
+      <div class="flex">
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800"><%= @seminar.errors.count %>件のエラーが発生しました</h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul role="list" class="list-disc pl-5 space-y-1">
+              <% @seminar.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :title, "セミナータイトル \u003Cspan class='text-red-500'>*\u003C/span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.text_field :title, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", required: true %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= f.label :seminar_date, "開催日 <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1">
+        <%= f.date_field :seminar_date, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", required: true %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :seminar_category_id, "カテゴリ <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1">
+        <%= f.collection_select :seminar_category_id, SeminarCategory.order(:name), :id, :name, { include_blank: "選択してください" }, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <%= f.label :location, "開催場所 <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1">
+        <%= f.text_field :location, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", required: true %>
+      </div>
+    </div>
+
+    <div>
+      <%= f.label :capacity, "定員（人数） <span class='text-red-500'>*</span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+      <div class="mt-1">
+        <%= f.number_field :capacity, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :description, "説明 \u003Cspan class='text-red-500'>*\u003C/span>".html_safe, class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.text_area :description, rows: 6, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border border-gray-300 rounded-md p-2", required: true %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :slug, "URLスラッグ（半角英数字とハイフン）", class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.text_field :slug, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border", placeholder: "省略すると自動生成されます" %>
+    </div>
+  </div>
+
+  <div class="flex items-start mt-4">
+    <div class="h-5 flex items-center">
+      <%= f.check_box :is_published, class: "focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" %>
+    </div>
+    <div class="ml-3 text-sm">
+      <%= f.label :is_published, "公開する", class: "font-medium text-gray-700" %>
+      <p class="text-gray-500">チェックを入れるとサイト上に表示されます。</p>
+    </div>
+  </div>
+
+  <div class="pt-5 flex justify-end space-x-3 border-t border-gray-200">
+    <%= link_to "キャンセル", admin_seminars_path, class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50" %>
+    <%= f.submit "保存", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
+<% end %>

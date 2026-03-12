@@ -1,0 +1,7 @@
+<% content_for :title, "セミナー作成" %>
+
+<div class="mb-6">
+  <%= link_to "← セミナー一覧に戻る", admin_seminars_path, class: "text-blue-600 hover:text-blue-800" %>
+</div>
+
+<%= render "form", seminar: @seminar %>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= display_meta_tags(
+      site: '一般社団法人 介護の現場からよりより社会を考える会',
+      description: '介護職を、日本が誇る専門職として社会に確立する。介護従事者向けセミナー・IT支援・経営コンサルティング。',
+      separator: '|',
+      reverse: true
+    ) %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Swiper.js CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "kaigo", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+</head>
+
+<body class="<%= yield :body_class %>">
+
+    <!-- ヘッダー -->
+    <header class="site-header" id="site-header">
+        <div class="header-container">
+            <div class="site-branding">
+                <h1 class="site-title">
+                    <%= link_to root_path, class: "site-title-link" do %>
+                        <span class="site-title-prefix">一般社団法人</span>
+                        <span class="site-title-main">介護の現場からよりより社会を考える会</span>
+                    <% end %>
+                </h1>
+                <p class="site-description">Care Future Design</p>
+            </div>
+
+            <nav class="main-navigation" id="main-navigation">
+                <ul class="nav-menu">
+                    <% unless current_page?(root_path) %>
+                        <li class="nav-item"><%= link_to "TOP", root_path %></li>
+                    <% end %>
+                    <li class="nav-item"><%= link_to "理念", philosophy_path %></li>
+                    <li class="nav-item"><%= link_to "運営紹介", about_path %></li>
+                    <li class="nav-item"><%= link_to "セミナー紹介", seminars_path %></li>
+                    <li class="nav-item nav-item-cta"><%= link_to "入会申込", join_path, class: "header-cta" %></li>
+                    <li class="nav-item"><%= link_to "お問い合わせ", contact_path %></li>
+                </ul>
+            </nav>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="メニュー" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content" class="site-main">
+        <%= yield %>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer" id="contact" style="width: 100% !important; max-width: 100% !important; box-sizing: border-box;">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-info">
+                    <div class="footer-branding">
+                        <span class="footer-logo">一般社団法人 介護の現場からよりより社会を考える会</span>
+                        <span class="footer-tagline">Care Future Design</span>
+                    </div>
+                    <address class="footer-address">
+                        〒455-0806　名古屋市港区明正一丁目<br>
+                        TEL：052-386-2541
+                    </address>
+                </div>
+                <div class="footer-actions">
+                    <%= link_to join_path, class: "footer-membership-cta" do %>
+                        <span class="btn-icon">👤</span>
+                        会員登録・入会はこちら
+                    <% end %>
+                    <%= link_to contact_path, class: "footer-cta" do %>
+                        <span class="btn-icon">✉</span>
+                        お問い合わせ
+                    <% end %>
+                    <nav class="footer-nav">
+                        <%= link_to "団体概要", about_path %>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">
+                    Copyright &copy; <%= Date.current.year %> 一般社団法人 介護の現場からよりより社会を考える会 All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Main JS -->
+    <script src="<%= asset_path('main.js') %>"></script>
+</body>
+
+</html>

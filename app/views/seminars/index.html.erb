@@ -1,0 +1,84 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Seminars</span>
+        <h1 class="page-title">セミナー紹介</h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <p class="seminars-intro fade-in">
+            現場で即実践できるセミナーをご用意しています。<br>
+            介護のプロフェッショナルとしてのスキルアップを全力でサポートします。
+        </p>
+
+        <!-- カテゴリ別カード -->
+        <div class="seminars-grid">
+            <!-- ケアセミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'care') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <%= image_tag "images/seminar_care.png", alt: "ケアセミナー" %>
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">CARE SEMINAR</span>
+                        <h3 class="seminar-title">ケアセミナー</h3>
+                        <p class="seminar-desc">身体介助の手法や適切なオムツ使用の講習など、現場で即実践できる技術を学びます。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+            <!-- IT活用・DXセミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'it-dx') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <%= image_tag "images/seminar_it_dx.png", alt: "IT活用・DXセミナー" %>
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">IT & DX SEMINAR</span>
+                        <h3 class="seminar-title">IT活用・DXセミナー</h3>
+                        <p class="seminar-desc">IT製品に関する基本的な使い方から、現場の負担を減らすツールの導入・活用術を学び、業務効率化を実現します。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+            <!-- 経営セミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'management') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&q=80" alt="経営セミナー">
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">MANAGEMENT SEMINAR</span>
+                        <h3 class="seminar-title">経営セミナー</h3>
+                        <p class="seminar-desc">経営者に向けて、介護現場の実践知を活かしながら持続可能な事業運営と人材定着を実現するための経営戦略を学びます。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+        </div>
+
+        <% if @seminars.any? %>
+            <section class="mt-section fade-in">
+                <div class="section-header">
+                    <h2 class="section-title">開催予定セミナー</h2>
+                </div>
+                <div class="seminars-list">
+                    <% @seminars.each do |seminar| %>
+                        <div class="news-item">
+                            <time class="news-date" datetime="<%= seminar.seminar_date %>">
+                                <%= seminar.seminar_date&.strftime('%Y.%m.%d') %>
+                            </time>
+                            <% if seminar.seminar_category %>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium" style="background-color: <%= seminar.seminar_category.color %>20; color: <%= seminar.seminar_category.color %>; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem;">
+                                    <%= seminar.seminar_category.name %>
+                                </span>
+                            <% end %>
+                            <%= link_to seminar.title, seminar_path(slug: seminar.slug), class: "news-link" %>
+                        </div>
+                    <% end %>
+                </div>
+            </section>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<% content_for :title, "セミナー管理" %>
+
+<div class="mb-6 flex justify-between items-center">
+  <p class="text-gray-600">開催するセミナーを管理します。</p>
+  <%= link_to "新規作成", new_admin_seminar_path, class: "bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+</div>
+
+<div class="bg-white shadow overflow-hidden sm:rounded-md">
+  <ul role="list" class="divide-y divide-gray-200">
+    <% @seminars.each do |seminar| %>
+      <li>
+        <div class="px-4 py-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between">
+          <div class="flex flex-col">
+            <div class="text-lg font-medium text-blue-600 truncate mb-1">
+              <%= seminar.is_published ? "🟢" : "⚫️" %> <%= seminar.title %>
+            </div>
+            <div class="text-sm text-gray-500 flex flex-wrap gap-4">
+              <span>🗓️ <%= seminar.seminar_date&.strftime('%Y年%m月%d日') || "未定" %></span>
+              <% if seminar.seminar_category %>
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium" style="background-color: <%= seminar.seminar_category.color %>20; color: <%= seminar.seminar_category.color %>">
+                  <%= seminar.seminar_category.name %>
+                </span>
+              <% end %>
+              <span>📍 <%= seminar.location.presence || "未定" %></span>
+            </div>
+          </div>
+          <div class="flex space-x-2 mt-4 md:mt-0">
+            <%= link_to "編集", edit_admin_seminar_path(seminar), class: "text-indigo-600 hover:text-indigo-900 bg-indigo-100 hover:bg-indigo-200 px-3 py-1 rounded" %>
+            <%= button_to "削除", admin_seminar_path(seminar), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "text-red-600 hover:text-red-900 bg-red-100 hover:bg-red-200 px-3 py-1 rounded", style: "border: none; cursor: pointer;" %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+    <% if @seminars.empty? %>
+      <li class="px-4 py-8 text-center text-gray-500">セミナーがまだありません。</li>
+    <% end %>
+  </ul>
+</div>

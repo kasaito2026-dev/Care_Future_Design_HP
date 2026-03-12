@@ -1,0 +1,49 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Seminar Detail</span>
+        <h1 class="page-title"><%= @seminar.title %></h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <div class="seminar-detail fade-in">
+            <div class="seminar-meta" style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <% if @seminar.seminar_date %>
+                    <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-gray-600);">
+                        🗓️ <%= @seminar.seminar_date.strftime('%Y年%m月%d日') %>
+                    </span>
+                <% end %>
+                <% if @seminar.location.present? %>
+                    <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-gray-600);">
+                        📍 <%= @seminar.location %>
+                    </span>
+                <% end %>
+                <% if @seminar.capacity.present? %>
+                    <span style="display: inline-flex; align-items: center; gap: 4px; color: var(--color-gray-600);">
+                        👥 定員 <%= @seminar.capacity %>名
+                    </span>
+                <% end %>
+                <% if @seminar.seminar_category %>
+                    <span style="background-color: <%= @seminar.seminar_category.color %>20; color: <%= @seminar.seminar_category.color %>; padding: 2px 12px; border-radius: 4px; font-size: 0.85rem;">
+                        <%= @seminar.seminar_category.name %>
+                    </span>
+                <% end %>
+            </div>
+
+            <div class="seminar-body" style="line-height: 2; font-size: 1.05rem;">
+                <%= simple_format(@seminar.description) %>
+            </div>
+
+            <div class="page-cta-box fade-in" style="margin-top: 3rem;">
+                <h3>このセミナーに参加する</h3>
+                <p>セミナーへの参加をご希望の方は、下記よりお申し込みください。</p>
+                <%= link_to "セミナー申込フォーム", contact_path, class: "btn btn-accent" %>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <%= link_to "← セミナー一覧に戻る", seminars_path, style: "color: var(--color-primary);" %>
+        </div>
+    </div>
+</div>

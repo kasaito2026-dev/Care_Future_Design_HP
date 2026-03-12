@@ -1,0 +1,7 @@
+<% content_for :title, "カテゴリ編集: #{@category.name}" %>
+
+<div class="mb-6">
+  <%= link_to "← カテゴリ一覧に戻る", admin_categories_path, class: "text-blue-600 hover:text-blue-800" %>
+</div>
+
+<%= render "form", category: @category %>

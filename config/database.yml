@@ -1,0 +1,20 @@
+# PostgreSQL configuration for kaigo-site
+# Uses DATABASE_URL environment variable when available
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
+  database: kaigo_development
+
+test:
+  <<: *default
+  database: kaigo_test
+
+production:
+  <<: *default
+  url: <%= ENV["DATABASE_URL"] %>

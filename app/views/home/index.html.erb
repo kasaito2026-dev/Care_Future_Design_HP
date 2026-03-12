@@ -1,0 +1,271 @@
+<% content_for :body_class, "home" %>
+
+<!-- ヒーローセクション（スライドショー） -->
+<section class="hero-section" id="home">
+    <div class="swiper hero-slider">
+        <div class="swiper-wrapper">
+            <!-- スライド1 -->
+            <div class="swiper-slide">
+                <div class="slide-image"
+                    style="background-image: url('<%= asset_path('images/hero_care_dignity.png') %>');">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">
+                        介護職を、日本が誇る専門職として<br>社会に確立する。
+                    </h1>
+                    <div class="hero-cta">
+                        <a href="#seminars" class="btn btn-accent btn-large">セミナー情報を見る</a>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド2 -->
+            <div class="swiper-slide">
+                <div class="slide-image"
+                    style="background-image: url('<%= asset_path('images/hero_care_technology.png') %>');">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">最新のケアを現場に届ける</h1>
+                    <div class="hero-cta">
+                        <a href="#seminars" class="btn btn-accent btn-large">セミナー情報を見る</a>
+                    </div>
+                </div>
+            </div>
+            <!-- スライド3 -->
+            <div class="swiper-slide">
+                <div class="slide-image"
+                    style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=1920&q=80');">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1 class="slide-title">IT活用で働きやすい現場へ</h1>
+                    <div class="hero-cta">
+                        <a href="#seminars" class="btn btn-accent btn-large">セミナー情報を見る</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+    <div class="scroll-indicator">
+        <span>SCROLL</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- 理念・概要セクション -->
+<section class="outline-section" id="outline">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Outline・Mission</span>
+            <h2 class="section-title">理念</h2>
+        </div>
+
+        <div class="outline-content fade-in text-center">
+            <div class="outline-mission">
+                <p><strong>介護職を、日本が誇る専門職として社会に確立する。</strong></p>
+            </div>
+
+            <p class="outline-text-summary">
+                介護職は、人の命と尊厳に向き合う、社会を根底から支える専門職です。私たちは、介護に携わる全ての人が誇りを持って働き、その価値が社会から正当に認められる未来を目指して活動しています。
+            </p>
+
+            <div class="section-cta">
+                <%= link_to "理念について詳しく見る", philosophy_path, class: "btn btn-secondary" %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 代表者紹介小セクション -->
+<section class="about-summary-section" id="about">
+    <div class="container">
+        <div class="about-summary-flex fade-in">
+            <div class="about-summary-image">
+                <%= image_tag "images/representative.jpg", alt: "代表理事 斎藤一春" %>
+            </div>
+            <div class="about-summary-content">
+                <div class="section-header section-header-left">
+                    <span class="section-label">Representative</span>
+                    <h2 class="section-title">代表挨拶</h2>
+                </div>
+                <p class="about-summary-text">
+                介護は「きつい・汚い・危険」と言われる過酷な現場ですが、私はそこに何ものにも代えがたい「やり甲斐」と誇りを感じています。
+人を支える日々の中で葛藤や課題に向き合いながら、介護で最も大切なのは技術よりも「利他の心」というハートだと確信しました。
+人生の老い・病・最期に寄り添い、その人らしい尊厳を守ることは、介護だからこそ担える大きな使命です。
+だからこそ私は、この尊い仕事が社会から正当に評価される未来を目指し、志を共にする人と介護の未来を考え続けていきたいと思っています。
+                </p>
+                <%= link_to "運営紹介", about_path, class: "btn btn-secondary" %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- セミナー紹介セクション -->
+<section class="seminars-section" id="seminars">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Seminars</span>
+            <h2 class="section-title">セミナー紹介</h2>
+        </div>
+        <p class="seminars-intro fade-in">
+            現場で即実践できる3つのジャンルのセミナーをご用意しています。<br>
+            介護のプロフェッショナルとしてのスキルアップを全力でサポートします。
+        </p>
+
+        <div class="seminars-grid">
+            <!-- ケアセミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'care') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <%= image_tag "images/seminar_care.png", alt: "ケアセミナー" %>
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">CARE SEMINAR</span>
+                        <h3 class="seminar-title">ケアセミナー</h3>
+                        <p class="seminar-desc">身体介助の手法や適切なオムツ使用の講習など、現場で即実践できる技術を学びます。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+            <!-- IT活用・DXセミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'it-dx') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <%= image_tag "images/seminar_it_dx.png", alt: "IT活用・DXセミナー" %>
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">IT & DX SEMINAR</span>
+                        <h3 class="seminar-title">IT活用・DXセミナー</h3>
+                        <p class="seminar-desc">IT製品に関する基本的な使い方から、現場の負担を減らすツールの導入・活用術を学び、業務効率化を実現します。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+            <!-- 経営セミナー -->
+            <a href="<%= seminar_category_page_path(slug: 'management') %>" class="seminar-card-link fade-in" style="text-decoration: none; color: inherit; display: block; border-radius: 12px; overflow: hidden;">
+                <article class="seminar-card" style="height: 100%; transition: all var(--transition-fast);">
+                    <div class="seminar-icon">
+                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&q=80" alt="経営セミナー">
+                    </div>
+                    <div class="seminar-content">
+                        <span class="seminar-label">MANAGEMENT SEMINAR</span>
+                        <h3 class="seminar-title">経営セミナー</h3>
+                        <p class="seminar-desc">経営者に向けて、介護現場の実践知を活かしながら持続可能な事業運営と人材定着を実現するための経営戦略を学びます。</p>
+                        <span class="seminar-btn" style="display:inline-block; font-weight:700; color:var(--color-primary); border:2px solid var(--color-primary); padding:10px 24px; border-radius:30px; transition:all var(--transition-fast);">詳細を見る</span>
+                    </div>
+                </article>
+            </a>
+        </div>
+
+        <div class="section-cta text-center mt-section fade-in">
+            <%= link_to "全てのセミナーを見る", seminars_path, class: "btn btn-secondary" %>
+        </div>
+    </div>
+</section>
+
+<!-- 会員制度セクション -->
+<section class="membership-section" id="membership">
+    <div class="container">
+        <div class="section-header fade-in">
+            <span class="section-label">Membership</span>
+            <h2 class="section-title">会員制度のご案内</h2>
+        </div>
+
+        <div class="membership-content fade-in">
+            <p class="membership-text">
+                本会は、会員の皆様からの<strong>月額会費</strong>により運営されています。<br>
+                「共に歩むパートナー」として、介護現場を支える皆様と一緒に、<br>
+                より良い介護社会の実現を目指しています。
+            </p>
+
+            <div class="membership-benefits fade-in">
+                <p class="membership-benefits-label">会員特典</p>
+                <div class="membership-benefits-grid">
+                    <div class="membership-benefit-card static-card">
+                        <div class="benefit-image img-seminar">
+                            <%= image_tag "images/benefit_seminar.png", alt: "セミナー参加権" %>
+                        </div>
+                        <h3 class="benefit-title">特典１｜セミナー参加権</h3>
+                        <p class="benefit-desc">開催される全てのセミナーに参加できる権利。最新の介護技術・IT活用・経営ノウハウを学ぶことができます。</p>
+                    </div>
+                    <div class="membership-benefit-card static-card">
+                        <div class="benefit-image img-chat">
+                            <%= image_tag "images/benefit_chat.jpg", alt: "ITチャット相談" %>
+                        </div>
+                        <h3 class="benefit-title">特典２｜ITチャット相談</h3>
+                        <p class="benefit-desc">ITエンジニアにいつでもチャットで相談できる権利。ITに関するお困りごとについて、チャットによる相談・問い合わせがいつでも可能です。</p>
+                    </div>
+                </div>
+            </div>
+
+            <%= link_to "入会のお申し込みはこちら", join_path, class: "membership-cta" %>
+            <p class="membership-note">※ 会員登録には審査があります。詳細は入会ページをご確認ください。</p>
+        </div>
+    </div>
+</section>
+
+<!-- お知らせ・活動報告セクション -->
+<section class="news-section" id="news">
+    <div class="container">
+        <div class="news-grid">
+            <!-- セミナーカレンダー -->
+            <div class="news-column fade-in">
+                <div class="section-header">
+                    <span class="section-label">Seminar Calendar</span>
+                    <h2 class="section-title">セミナーカレンダー</h2>
+                </div>
+                <div class="seminar-calendar" id="seminarCalendar">
+                    <div class="calendar-nav">
+                        <button class="cal-prev" id="calPrev" aria-label="前の月">&lsaquo;</button>
+                        <span class="cal-month-label" id="calMonthLabel"></span>
+                        <button class="cal-next" id="calNext" aria-label="次の月">&rsaquo;</button>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                    <div class="calendar-events" id="calendarEvents"></div>
+                </div>
+            </div>
+
+            <!-- 活動報告 -->
+            <div class="news-column fade-in">
+                <div class="section-header">
+                    <span class="section-label">Activity Reports</span>
+                    <h2 class="section-title">活動報告</h2>
+                </div>
+                <ul class="news-list">
+                    <% if @recent_reports.any? %>
+                        <% @recent_reports.each do |report| %>
+                            <li class="news-item">
+                                <time class="news-date" datetime="<%= report.published_at&.strftime('%Y-%m-%d') %>">
+                                    <%= report.published_at&.strftime('%Y.%m.%d') %>
+                                </time>
+                                <%= link_to report.title, activity_report_path(slug: report.slug), class: "news-link" %>
+                            </li>
+                        <% end %>
+                    <% else %>
+                        <li class="news-item news-item--empty">
+                            <p style="color:#999;font-size:0.9rem;padding:12px 0;">活動報告はまだ投稿されていません。</p>
+                        </li>
+                    <% end %>
+                </ul>
+                <div class="news-more">
+                    <%= link_to "活動報告一覧を見る", activity_reports_path, class: "btn btn-secondary" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Calendar event data for JavaScript -->
+<script>
+  var kaigoSeminarEvents = [];
+  fetch('<%= api_seminar_events_path %>')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      kaigoSeminarEvents = data;
+      if (typeof initSeminarCalendar === 'function') initSeminarCalendar();
+    });
+</script>

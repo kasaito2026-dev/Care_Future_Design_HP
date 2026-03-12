@@ -1,0 +1,31 @@
+<div class="page-header-section"
+    style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80');">
+    <div class="page-header-overlay"></div>
+    <div class="container">
+        <h1 class="page-title-large">活動報告</h1>
+        <p class="page-subtitle">ACTIVITY REPORT</p>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container" style="max-width: 800px;">
+        <article class="activity-report-detail fade-in">
+            <header style="margin-bottom: 2rem; border-bottom: 2px solid var(--color-primary); padding-bottom: 1rem;">
+                <time datetime="<%= @report.published_at&.strftime('%Y-%m-%d') %>" style="color: var(--color-gray-500); font-weight: 500; display: block; margin-bottom: 0.5rem;">
+                    <%= @report.published_at&.strftime('%Y.%m.%d') %>
+                </time>
+                <h1 style="font-size: 1.8rem; font-weight: 700; color: var(--color-gray-800); line-height: 1.4;">
+                    <%= @report.title %>
+                </h1>
+            </header>
+
+            <div class="report-content" style="line-height: 1.8; color: var(--color-gray-700); font-size: 1.05rem;">
+                <%= simple_format(@report.content) %>
+            </div>
+            
+            <div style="margin-top: 4rem; text-align: center; padding-top: 2rem; border-top: 1px solid var(--color-gray-200);">
+                <%= link_to "← 活動報告一覧に戻る", activity_reports_path, class: "btn btn-secondary" %>
+            </div>
+        </article>
+    </div>
+</div>

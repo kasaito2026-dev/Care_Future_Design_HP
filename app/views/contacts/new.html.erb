@@ -1,0 +1,51 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Contact</span>
+        <h1 class="page-title">お問い合わせ</h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <div class="contact-form-area fade-in" style="max-width: 700px; margin: 0 auto;">
+            <p style="margin-bottom: 2rem; color: var(--color-gray-600);">
+                以下のフォームに必要事項をご入力の上、送信してください。<br>
+                3営業日以内にご連絡させていただきます。
+            </p>
+
+            <% if flash[:notice] %>
+                <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <%= flash[:notice] %>
+                </div>
+            <% end %>
+
+            <%= form_with url: contact_path, method: :post, local: true, style: "display: flex; flex-direction: column; gap: 1.5rem;" do |f| %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">会社名</label>
+                    <input type="text" name="contact[company_name]" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">お名前 <span style="color: red;">*</span></label>
+                    <input type="text" name="contact[name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">メールアドレス <span style="color: red;">*</span></label>
+                    <input type="email" name="contact[email]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">電話番号 <span style="color: red;">*</span></label>
+                    <input type="tel" name="contact[phone]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button type="submit" class="btn btn-accent btn-large">送信する</button>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

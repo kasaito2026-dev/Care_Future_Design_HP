@@ -1,0 +1,7 @@
+<% content_for :title, "活動報告編集: #{@report.title}" %>
+
+<div class="mb-6">
+  <%= link_to "← 活動報告一覧に戻る", admin_activity_reports_path, class: "text-blue-600 hover:text-blue-800" %>
+</div>
+
+<%= render "form", report: @report %>

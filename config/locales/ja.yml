@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      seminar: "セミナー"
+    attributes:
+      seminar:
+        title: "タイトル"
+        seminar_date: "開催日"
+        seminar_category_id: "カテゴリ"
+        capacity: "定員（人数）"
+        location: "開催場所"
+        description: "説明"
+        slug: "URLスラッグ"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "を入力して下さい"
+      empty: "を入力して下さい"
+      invalid: "は不正な値です"
+      taken: "はすでに存在します"
+      "not_a_number": "は数値で入力してください"
