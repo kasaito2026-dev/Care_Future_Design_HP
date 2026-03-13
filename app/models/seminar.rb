@@ -11,6 +11,7 @@ class Seminar < ApplicationRecord
   validates :description, presence: true
 
   before_validation :generate_slug, if: -> { slug.blank? && title.present? }
+  before_validation :set_default_published
 
   scope :published, -> { where(is_published: true) }
   scope :upcoming, -> { where("seminar_date >= ?", Date.current).order(seminar_date: :asc) }
@@ -30,5 +31,9 @@ class Seminar < ApplicationRecord
     base_slug = title.parameterize
     base_slug = "seminar-#{SecureRandom.hex(4)}" if base_slug.blank?
     self.slug = base_slug
+  end
+
+  def set_default_published
+    self.is_published = true if self.is_published.nil?
   end
 end

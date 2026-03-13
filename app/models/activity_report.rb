@@ -5,6 +5,7 @@ class ActivityReport < ApplicationRecord
   validates :content, presence: true
 
   before_validation :generate_slug, if: -> { slug.blank? && title.present? }
+  before_validation :set_default_published
 
   scope :published, -> { where(is_published: true).order(published_at: :desc) }
 
@@ -18,5 +19,9 @@ class ActivityReport < ApplicationRecord
     base_slug = title.parameterize
     base_slug = "report-#{SecureRandom.hex(4)}" if base_slug.blank?
     self.slug = base_slug
+  end
+
+  def set_default_published
+    self.is_published = true if self.is_published.nil?
   end
 end
