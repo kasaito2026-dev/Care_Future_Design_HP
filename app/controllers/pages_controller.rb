@@ -4,11 +4,11 @@ class PagesController < ApplicationController
   end
 
   def about
-    set_meta_tags title: '運営紹介', description: '一般社団法人 介護の現場からよりより社会を考える会の代表者挨拶と団体概要をご紹介します。'
+    set_meta_tags title: '運営紹介', description: '一般社団法人 介護の現場からよりよい社会を考える会の代表者挨拶と団体概要をご紹介します。'
   end
 
   def join
-    set_meta_tags title: '入会申込', description: '一般社団法人 介護の現場からよりより社会を考える会への入会をご希望の方はこちらからお申し込みください。'
+    set_meta_tags title: '入会申込', description: '一般社団法人 介護の現場からよりよい社会を考える会への入会をご希望の方はこちらからお申し込みください。'
   end
 
   def join_thanks

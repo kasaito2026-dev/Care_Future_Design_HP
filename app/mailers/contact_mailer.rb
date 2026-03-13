@@ -4,7 +4,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact_params
     mail(
       to: ENV.fetch("ADMIN_EMAIL", "info@kaigo-society.org"),
-      subject: "【介護の現場からよりより社会を考える会】お問い合わせ",
+      subject: "【介護の現場からよりよい社会を考える会】お問い合わせ",
       reply_to: @contact[:email]
     )
   end
@@ -14,7 +14,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact_params
     mail(
       to: @contact[:email],
-      subject: "【介護の現場からよりより社会を考える会】お問い合わせありがとうございます"
+      subject: "【介護の現場からよりよい社会を考える会】お問い合わせありがとうございます"
     )
   end
 end

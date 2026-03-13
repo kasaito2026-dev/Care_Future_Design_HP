@@ -4,7 +4,7 @@ class JoinMailer < ApplicationMailer
     @join = join_params
     mail(
       to: ENV.fetch("ADMIN_EMAIL", "info@kaigo-society.org"),
-      subject: "【介護の現場からよりより社会を考える会】入会申込がありました",
+      subject: "【介護の現場からよりよい社会を考える会】入会申込がありました",
       reply_to: @join[:email]
     )
   end
@@ -14,7 +14,7 @@ class JoinMailer < ApplicationMailer
     @join = join_params
     mail(
       to: @join[:email],
-      subject: "【介護の現場からよりより社会を考える会】入会申込を受け付けました"
+      subject: "【介護の現場からよりよい社会を考える会】入会申込を受け付けました"
     )
   end
 end

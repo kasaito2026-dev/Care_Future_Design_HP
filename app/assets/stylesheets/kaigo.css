@@ -3,14 +3,14 @@ Theme Name: Kaigo Society Theme
 Theme URI: https://example.com/kaigo-society
 Author: Care Future Design
 Author URI: https://example.com
-Description: 介護の現場からよりより社会を考える会の公式WordPressテーマ。介護事業所を応援し、介護職の社会的地位向上を目指すコミュニティサイト用テーマ。
+Description: 介護の現場からよりよい社会を考える会の公式WordPressテーマ。介護事業所を応援し、介護職の社会的地位向上を目指すコミュニティサイト用テーマ。
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kaigo-society
 Tags: one-column, custom-menu, featured-images, translation-ready
 
-介護の現場からよりより社会を考える会 - 公式テーマ
+介護の現場からよりよい社会を考える会 - 公式テーマ
 */
 
 /* ===========================================
@@ -1227,8 +1227,21 @@ address {
 }
 
 @media (max-width: 480px) {
-    .site-title {
-        font-size: 0.9rem;
+    .site-title-main {
+        font-size: 0.85rem;
+    }
+
+    .site-title-prefix {
+        font-size: 0.65rem;
+    }
+
+    .site-description {
+        font-size: 0.55rem;
+        margin-top: 2px;
+    }
+
+    .footer-logo {
+        font-size: 0.85rem;
     }
 
     .section-title {
