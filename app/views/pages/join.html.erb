@@ -19,12 +19,45 @@
                 </div>
             <% end %>
 
+            <!-- 会員プランのご案内 -->
+            <div style="background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 2rem; margin-bottom: 2.5rem;">
+                <h3 style="margin-top: 0; margin-bottom: 1.5rem; text-align: center; color: var(--color-primary); font-size: 1.25rem;">会員プランについて</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--color-gray-800); border-bottom: 2px solid var(--color-primary); padding-bottom: 0.5rem;">個人プラン</h4>
+                        <p style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: bold; color: var(--color-primary);">月額 1,000円 / 1口</p>
+                        <ul style="margin: 0; padding-left: 1.2rem; color: var(--color-gray-600); font-size: 0.95rem;">
+                            <li>各種セミナーへの参加</li>
+                            <li>会員限定コンテンツの閲覧等</li>
+                        </ul>
+                    </div>
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--color-gray-800); border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem;">法人プラン</h4>
+                        <p style="margin: 0 0 0.5rem 0; font-size: 1.25rem; font-weight: bold; color: var(--color-accent);">月額 10,000円 / 1口</p>
+                        <ul style="margin: 0; padding-left: 1.2rem; color: var(--color-gray-600); font-size: 0.95rem;">
+                            <li>法人スタッフのセミナー優待参加</li>
+                            <li>IT導入・経営に関するご相談等</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <%= form_with url: join_path, method: :post, local: true, style: "display: flex; flex-direction: column; gap: 1.5rem;" do |f| %>
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
                 <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">会社名(所属していない場合は「無し」と記入してください) <span style="color: red;">*</span></label>
+                    <input type="text" name="join[company_name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
                     <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">お名前 <span style="color: red;">*</span></label>
                     <input type="text" name="join[name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">役職(任意)</label>
+                    <input type="text" name="join[position]" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
                 </div>
 
                 <div>
@@ -38,8 +71,17 @@
                 </div>
 
                 <div>
-                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">ご所属(個人の方は"個人"と記載) <span style="color: red;">*</span></label>
-                    <input type="text" name="join[organization]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">加入プラン <span style="color: red;">*</span></label>
+                    <div style="position: relative;">
+                        <select name="join[plan]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem; appearance: none; background-color: white;">
+                            <option value="">プランを選択してください</option>
+                            <option value="個人プラン">個人プラン</option>
+                            <option value="法人プラン">法人プラン</option>
+                        </select>
+                        <div style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--color-gray-500);">
+                            ▼
+                        </div>
+                    </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 1rem;">

@@ -23,13 +23,18 @@
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
                 <div>
-                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">会社名</label>
-                    <input type="text" name="contact[company_name]" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">会社名(所属していない場合は「無し」と記入してください) <span style="color: red;">*</span></label>
+                    <input type="text" name="contact[company_name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
                 </div>
 
                 <div>
                     <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">お名前 <span style="color: red;">*</span></label>
                     <input type="text" name="contact[name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">役職</label>
+                    <input type="text" name="contact[position]" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
                 </div>
 
                 <div>

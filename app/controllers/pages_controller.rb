@@ -12,10 +12,10 @@ class PagesController < ApplicationController
   end
 
   def create_join
-    join_params = params.require(:join).permit(:name, :email, :phone, :organization)
+    join_params = params.require(:join).permit(:company_name, :name, :position, :email, :phone, :plan)
 
-    if join_params[:name].blank? || join_params[:email].blank? || join_params[:phone].blank? || join_params[:organization].blank?
-      flash.now[:alert] = "全ての必須項目を入力してください。"
+    if join_params[:company_name].blank? || join_params[:name].blank? || join_params[:email].blank? || join_params[:phone].blank? || join_params[:plan].blank?
+      flash.now[:alert] = "必須項目を入力してください。"
       set_meta_tags title: '入会申込'
       render :join, status: :unprocessable_entity
       return

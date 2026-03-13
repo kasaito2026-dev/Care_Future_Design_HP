@@ -4,9 +4,9 @@ class ContactsController < ApplicationController
   end
 
   def create
-    contact_params = params.require(:contact).permit(:company_name, :name, :email, :phone)
+    contact_params = params.require(:contact).permit(:company_name, :name, :position, :email, :phone)
 
-    if contact_params[:name].blank? || contact_params[:email].blank? || contact_params[:phone].blank?
+    if contact_params[:company_name].blank? || contact_params[:name].blank? || contact_params[:email].blank? || contact_params[:phone].blank?
       flash.now[:alert] = "必須項目を入力してください。"
       render :new, status: :unprocessable_entity
       return

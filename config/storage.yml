@@ -1,0 +1,8 @@
+supabase:
+  service: S3
+  access_key_id: <%= ENV['SUPABASE_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['SUPABASE_SECRET_ACCESS_KEY'] %>
+  region: ap-northeast-1
+  bucket: active_storage
+  endpoint: <%= ENV['SUPABASE_ENDPOINT_URL'] %>
+  force_path_style: true
