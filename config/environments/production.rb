@@ -97,12 +97,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp-relay.brevo.com",
-    port: 465,
+    port: 2525,
     domain: ENV.fetch("MAILER_DOMAIN", "kaigo-society.org"),
     user_name: ENV.fetch("BREVO_SMTP_LOGIN", ""),
     password: ENV.fetch("BREVO_SMTP_PASSWORD", ""),
     authentication: :plain,
-    tls: true
+    enable_starttls_auto: true
   }
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APP_HOST", "kaigo-society.onrender.com"),
