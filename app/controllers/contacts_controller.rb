@@ -3,6 +3,10 @@ class ContactsController < ApplicationController
     set_meta_tags title: 'お問い合わせ', description: 'お問い合わせはこちらのフォームからお気軽にご連絡ください。'
   end
 
+  def thanks
+    set_meta_tags title: '送信完了 | お問い合わせ'
+  end
+
   def create
     contact_params = params.require(:contact).permit(:company_name, :name, :position, :email, :phone, :message)
 
@@ -19,6 +23,6 @@ class ContactsController < ApplicationController
       Rails.logger.error "Mail delivery error: #{e.message}"
     end
 
-    redirect_to contact_path, notice: "お問い合わせありがとうございます。5営業日以内にご連絡させていただきます。"
+    redirect_to contact_thanks_path
   end
 end

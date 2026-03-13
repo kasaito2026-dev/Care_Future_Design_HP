@@ -11,10 +11,19 @@ Rails.application.routes.draw do
   get "philosophy", to: "pages#philosophy", as: :philosophy
   get "about", to: "pages#about", as: :about
   get "contact", to: "contacts#new", as: :contact
+  post "contact", to: "contacts#create"
+  get "contact/thanks", to: "contacts#thanks", as: :contact_thanks
+
   get "join", to: "pages#join", as: :join
+  post "join", to: "pages#create_join"
+  get "join/thanks", to: "pages#join_thanks", as: :join_thanks
 
   # Seminars
-  resources :seminars, only: [:index, :show], param: :slug
+  resources :seminars, only: [:index, :show], param: :slug do
+    get "apply", to: "seminar_applications#new", as: :apply
+    post "apply", to: "seminar_applications#create"
+    get "thanks", to: "seminar_applications#thanks", as: :thanks
+  end
   get "seminar-category/:slug", to: "seminars#category", as: :seminar_category_page
 
   # Activity Reports
@@ -22,11 +31,6 @@ Rails.application.routes.draw do
 
   # Seminar calendar API (JSON for calendar JS)
   get "api/seminar_events", to: "seminars#calendar_events", as: :api_seminar_events
-
-  # Contact form
-  post "contact", to: "contacts#create"
-  # Join form
-  post "join", to: "pages#create_join"
 
   # Admin namespace
   namespace :admin do

@@ -1,0 +1,78 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Seminar Application</span>
+        <h1 class="page-title">セミナー参加申込</h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container">
+        <div class="contact-form-area fade-in" style="max-width: 700px; margin: 0 auto;">
+            <div style="background: var(--color-gray-100); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
+                <h3 style="margin-bottom: 0.5rem; color: var(--color-primary); font-size: 1.2rem;">お申し込みセミナー</h3>
+                <p style="font-weight: bold; font-size: 1.3rem; margin-bottom: 0.5rem;"><%= @seminar.title %></p>
+                <% if @seminar.seminar_date %>
+                <p style="color: var(--color-gray-600); mragin: 0;">開催日: <%= @seminar.seminar_date.strftime('%Y年%m月%d日') %></p>
+                <% end %>
+            </div>
+
+            <p style="margin-bottom: 2rem; color: var(--color-gray-600);">
+                以下のフォームに必要事項をご入力の上、送信してください。<br>
+                お申し込み完了後、控えのメールが自動送信されます。
+            </p>
+
+            <% if flash[:notice] %>
+                <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <%= flash[:notice] %>
+                </div>
+            <% end %>
+            <% if flash[:alert] %>
+                <div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem;">
+                    <%= flash[:alert] %>
+                </div>
+            <% end %>
+
+            <%= form_with url: seminar_apply_path(@seminar.slug), method: :post, local: true, style: "display: flex; flex-direction: column; gap: 1.5rem;" do |f| %>
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">会社名・所属(無い場合は「無し」と記入) <span style="color: red;">*</span></label>
+                    <input type="text" name="application[company_name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">お名前 <span style="color: red;">*</span></label>
+                    <input type="text" name="application[name]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">役職</label>
+                    <input type="text" name="application[position]" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">メールアドレス <span style="color: red;">*</span></label>
+                    <input type="email" name="application[email]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">電話番号 <span style="color: red;">*</span></label>
+                    <input type="tel" name="application[phone]" required style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;">
+                </div>
+
+                <div>
+                    <label style="display: block; margin-bottom: 4px; font-weight: 500; color: var(--color-gray-700);">ご質問・備考等</label>
+                    <textarea name="application[message]" rows="4" style="width: 100%; padding: 12px; border: 1px solid var(--color-gray-300); border-radius: 6px; font-size: 1rem;"></textarea>
+                </div>
+
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button type="submit" class="btn btn-accent btn-large">セミナーに参加する</button>
+                </div>
+            <% end %>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center;">
+            <%= link_to "← セミナー詳細に戻る", seminar_path(@seminar.slug), style: "color: var(--color-primary);" %>
+        </div>
+    </div>
+</div>

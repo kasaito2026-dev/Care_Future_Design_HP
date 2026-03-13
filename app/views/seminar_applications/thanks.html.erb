@@ -1,0 +1,26 @@
+<div class="page-header">
+    <div class="container">
+        <span class="page-label">Complete</span>
+        <h1 class="page-title">申込完了</h1>
+    </div>
+</div>
+
+<div class="content-area py-section">
+    <div class="container text-center">
+        <h2 style="margin-bottom: 1.5rem; font-size: 1.8rem;">セミナーのお申し込みを受け付けました</h2>
+        <div style="background: var(--color-gray-100); padding: 1.5rem; border-radius: 8px; margin: 0 auto 2rem auto; max-width: 600px;">
+            <p style="font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--color-primary);"><%= @seminar.title %></p>
+        </div>
+        
+        <p style="margin-bottom: 2rem; color: var(--color-gray-600); line-height: 1.8;">
+            この度はセミナーにお申し込みいただき、誠にありがとうございます。<br>
+            ご入力いただいたメールアドレス宛に、控えのメールを自動送信いたしました。<br>
+            後日、詳細をご案内させていただきます。
+        </p>
+        
+        <div style="margin-top: 3rem; display: flex; gap: 1rem; justify-content: center;">
+            <%= link_to "セミナー一覧へ", seminars_path, class: "btn" %>
+            <%= link_to "トップページへ戻る", root_path, class: "btn btn-accent" %>
+        </div>
+    </div>
+</div>

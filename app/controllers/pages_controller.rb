@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     set_meta_tags title: '入会申込', description: '一般社団法人 介護の現場からよりより社会を考える会への入会をご希望の方はこちらからお申し込みください。'
   end
 
+  def join_thanks
+    set_meta_tags title: '送信完了 | 入会申込'
+  end
+
   def create_join
     join_params = params.require(:join).permit(:company_name, :name, :position, :email, :phone, :plan)
 
@@ -28,6 +32,6 @@ class PagesController < ApplicationController
       Rails.logger.error "Mail delivery error: #{e.message}"
     end
 
-    redirect_to join_path, notice: "入会申込を受け付けました。審査のうえ、5営業日以内に結果をご連絡させていただきます。"
+    redirect_to join_thanks_path
   end
 end
