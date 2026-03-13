@@ -28,6 +28,6 @@ class PagesController < ApplicationController
       Rails.logger.error "Mail delivery error: #{e.message}"
     end
 
-    redirect_to join_path, notice: "入会申込を受け付けました。審査のうえ、結果をご連絡させていただきます。"
+    redirect_to join_path, notice: "入会申込を受け付けました。審査のうえ、5営業日以内に結果をご連絡させていただきます。"
   end
 end

@@ -1,9 +1,6 @@
-<div class="page-header-section"
-    style="background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80');">
-    <div class="page-header-overlay"></div>
+<div class="page-header">
     <div class="container">
-        <h1 class="page-title-large"><%= @category.name %> 一覧</h1>
-        <p class="page-subtitle">
+        <span class="page-label">
             <% if @category.slug == 'care' %>
                 CARE SEMINAR
             <% elsif @category.slug == 'it-dx' %>
@@ -13,7 +10,8 @@
             <% else %>
                 <%= @category.name.upcase %>
             <% end %>
-        </p>
+        </span>
+        <h1 class="page-title"><%= @category.name %> 一覧</h1>
     </div>
 </div>
 

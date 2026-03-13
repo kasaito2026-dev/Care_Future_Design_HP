@@ -19,6 +19,6 @@ class ContactsController < ApplicationController
       Rails.logger.error "Mail delivery error: #{e.message}"
     end
 
-    redirect_to contact_path, notice: "お問い合わせありがとうございます。3営業日以内にご連絡させていただきます。"
+    redirect_to contact_path, notice: "お問い合わせありがとうございます。5営業日以内にご連絡させていただきます。"
   end
 end
