@@ -22,8 +22,8 @@ class PagesController < ApplicationController
     end
 
     begin
-      JoinMailer.notify_admin(join_params).deliver_later
-      JoinMailer.auto_reply(join_params).deliver_later
+      JoinMailer.notify_admin(join_params).deliver_now
+      JoinMailer.auto_reply(join_params).deliver_now
     rescue => e
       Rails.logger.error "Mail delivery error: #{e.message}"
     end

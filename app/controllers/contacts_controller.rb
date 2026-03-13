@@ -13,8 +13,8 @@ class ContactsController < ApplicationController
     end
 
     begin
-      ContactMailer.notify_admin(contact_params).deliver_later
-      ContactMailer.auto_reply(contact_params).deliver_later
+      ContactMailer.notify_admin(contact_params).deliver_now
+      ContactMailer.auto_reply(contact_params).deliver_now
     rescue => e
       Rails.logger.error "Mail delivery error: #{e.message}"
     end
