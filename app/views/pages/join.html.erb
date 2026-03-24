@@ -88,6 +88,14 @@
                     </p>
                 </div>
 
+                <div style="text-align: center; padding: 40px; background: var(--color-white); border-radius: 8px; margin-bottom: 2rem; border: 1px solid var(--color-gray-200);">
+                    <h3 style="color: var(--color-gray-800); margin-bottom: 1rem; font-size: 1.3rem;">現在入会申し込みフォームは準備中です</h3>
+                    <p style="color: var(--color-gray-600); margin: 0; line-height: 1.6;">
+                        運用体制が整い次第、受付を開始いたします。<br>ご案内まで今しばらくお待ちください。
+                    </p>
+                </div>
+
+                <% if false # いつでも復活できるようにフォームをコメントアウトしています %>
                 <%= form_with url: join_path, method: :post, local: true, style: "display: flex; flex-direction: column; gap: 1.5rem;" do |f| %>
                     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
@@ -133,6 +141,7 @@
                     <div style="text-align: center; margin-top: 1rem;">
                         <button type="submit" class="btn btn-accent btn-large" style="width: 100%; max-width: 300px;">入会を申し込む</button>
                     </div>
+                <% end %>
                 <% end %>
             </div>
         </div>
